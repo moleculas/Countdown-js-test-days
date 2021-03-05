@@ -12,7 +12,7 @@ function timer() {
   function pad(n) {
     return (n < 10 ? "0" + n : n);
   }
-  document.getElementById('cuenta').innerHTML = "<div class='simply-section simply-days-section'>"+ pad(days) + ":" + "<div class='simply-section simply-hours-section'>"+ pad(hours) + ":" + "<div class='simply-section simply-minutes-section'>"+ pad(minutes) + ":" + "<div class='simply-section simply-seconds-section'>" + pad(remainingSeconds);
+  document.getElementById('cuenta').innerHTML = "<div class='simply-section simply-days-section'><div><span class='simply-amount'>" + pad(days) + "</span><span class='simply-word'> días </span></div>" + ":" + "<div class='simply-section simply-hours-section'><div><span class='simply-amount'>" + pad(hours) + "</span><span class='simply-word'> horas </span></div>" + ":" + "<div class='simply-section simply-minutes-section'><div><span class='simply-amount'>" + pad(minutes) + "</span><span class='simply-word'> minutos </span></div>" + ":" + "<div class='simply-section simply-seconds-section'><div><span class='simply-amount'>" + pad(remainingSeconds) + "</span><span class='simply-word'> segundos </span></div>";
   if (seconds == 0) {
      seconds=upgradeTime;
   } else {
