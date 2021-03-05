@@ -1,4 +1,4 @@
-<span id="countdown" class="timer"></span>
+<span id="cuenta" class="timer"></span>
 <script>
  var upgradeTime = 864000; //10 días
 var seconds = upgradeTime;
@@ -12,7 +12,7 @@ function timer() {
   function pad(n) {
     return (n < 10 ? "0" + n : n);
   }
-  document.getElementById('countdown').innerHTML = "<div class='simply-section simply-days-section'>"+ pad(days) + ":" + "<div class='simply-section simply-hours-section'>"+ pad(hours) + ":" + "<div class='simply-section simply-minutes-section'>"+ pad(minutes) + ":" + "<div class='simply-section simply-seconds-section'>" + pad(remainingSeconds);
+  document.getElementById('cuenta').innerHTML = "<div class='simply-section simply-days-section'>"+ pad(days) + ":" + "<div class='simply-section simply-hours-section'>"+ pad(hours) + ":" + "<div class='simply-section simply-minutes-section'>"+ pad(minutes) + ":" + "<div class='simply-section simply-seconds-section'>" + pad(remainingSeconds);
   if (seconds == 0) {
      seconds=upgradeTime;
   } else {
