@@ -10,9 +10,35 @@ function timer() {
   var minutes     = Math.floor(minutesLeft/60);
   var remainingSeconds = seconds % 60;
   function pad(n) {
-    return (n < 10 ? "0" + n : n);
+    return (n < 10 ? "0" + n : n);    
   }
-  document.getElementById('cuenta').innerHTML = "<div class='simply-section simply-days-section'><div><span class='simply-amount'>" + pad(days) + "</span><span class='simply-word'> días </span></div>" + ":" + "<div class='simply-section simply-hours-section'><div><span class='simply-amount'>" + pad(hours) + "</span><span class='simply-word'> horas </span></div>" + ":" + "<div class='simply-section simply-minutes-section'><div><span class='simply-amount'>" + pad(minutes) + "</span><span class='simply-word'> minutos </span></div>" + ":" + "<div class='simply-section simply-seconds-section'><div><span class='simply-amount'>" + pad(remainingSeconds) + "</span><span class='simply-word'> segundos </span></div>";
+  var dias=pad(days);
+  if(dias==1){
+  	textoDias="dia";
+  }else{
+  	textoDias="dias";
+  }
+  var horas=pad(hours);
+   if(horas==1){
+  	textoHoras="hora";
+  }else{
+  	textoHoras="horas";
+  }
+  var minutos=pad(minutes);
+   if(minutos==1){
+  	textoMinutos="minuto";
+  }else{
+  	textoMinutos="minutos";
+  }
+  var segundos= pad(remainingSeconds);
+   if(segundos==1){
+  	textoSegundos="segundo";
+  }else{
+  	textoSegundos="segundos";
+  }
+
+
+  document.getElementById('cuenta').innerHTML = "<div class='simply-section simply-days-section'><div><span class='simply-amount'>" + dias + "</span><span class='simply-word'>" + textoDias + "</span></div>" + ":" + "<div class='simply-section simply-hours-section'><div><span class='simply-amount'>" + horas + "</span><span class='simply-word'>" + textoHoras + "</span></div>" + ":" + "<div class='simply-section simply-minutes-section'><div><span class='simply-amount'>" + minutos + "</span><span class='simply-word'>" + textoMinutos + "</span></div>" + ":" + "<div class='simply-section simply-seconds-section'><div><span class='simply-amount'>" + segundos + "</span><span class='simply-word'> " + textoSegundos + " </span></div>";
   if (seconds == 0) {
      seconds=upgradeTime;
   } else {
