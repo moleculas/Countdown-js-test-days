@@ -1,4 +1,55 @@
-<span id="cuenta" class="timer"></span>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap" rel="stylesheet">
+    <style>
+        .contador{
+            display: flex;
+            width: 60%;
+            margin: 0 auto;
+            justify-content: space-around;
+            align-items: center;
+        }
+        .contador .box{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        .contador .number, .number-four{
+            font-size: 60px;
+            font-weight: bold;
+            font-family: 'Open Sans', sans-serif;
+            position: relative;
+        }
+        .contador .number:after{
+            content: ':';
+            position: absolute;
+            top: 0;
+            left: 180%;
+        }
+        .contador .number-four:after{
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 150%;
+        }
+        .contador  h4{
+            font-family: 'Open Sans', sans-serif;
+            font-size: 25px;
+            margin-top:10px
+        }
+    </style>
+</head>
+<body>
+    
+        <span id="countdown" class="timer"></span>
 <script>
  var upgradeTime = 864000; //10 días
 var seconds = upgradeTime;
@@ -10,35 +61,33 @@ function timer() {
   var minutes     = Math.floor(minutesLeft/60);
   var remainingSeconds = seconds % 60;
   function pad(n) {
-    return (n < 10 ? "0" + n : n);    
+    return (n < 10 ? "0" + n : n);
   }
   var dias=pad(days);
   if(dias==1){
   	textoDias="dia";
   }else{
   	textoDias="dias";
-  }
+  };
   var horas=pad(hours);
    if(horas==1){
   	textoHoras="hora";
   }else{
   	textoHoras="horas";
-  }
+  };
   var minutos=pad(minutes);
    if(minutos==1){
   	textoMinutos="minuto";
   }else{
   	textoMinutos="minutos";
-  }
+  };
   var segundos= pad(remainingSeconds);
    if(segundos==1){
   	textoSegundos="segundo";
   }else{
   	textoSegundos="segundos";
-  }
-
-
-  document.getElementById('cuenta').innerHTML = "<div class='simply-section simply-days-section'><div><span class='simply-amount'>" + dias + "</span><span class='simply-word'>" + textoDias + "</span></div>" + ":" + "<div class='simply-section simply-hours-section'><div><span class='simply-amount'>" + horas + "</span><span class='simply-word'>" + textoHoras + "</span></div>" + ":" + "<div class='simply-section simply-minutes-section'><div><span class='simply-amount'>" + minutos + "</span><span class='simply-word'>" + textoMinutos + "</span></div>" + ":" + "<div class='simply-section simply-seconds-section'><div><span class='simply-amount'>" + segundos + "</span><span class='simply-word'> " + textoSegundos + " </span></div>";
+  };
+  document.getElementById('countdown').innerHTML = "<div class='contador'><div class='box'><span class='number'>"+dias+"</span><h4>" + textoDias + "</h4></div>"  + "<div class='box'><span class='number'>"+horas+"</span><h4>" + textoHoras + "</h4></div>" + "<div class='box'><span class='number'>"+minutos+"</span><h4>" + textoMinutos + "</h4></div>" + "<div class='box'><span class='number-four'>"+segundos+"</span><h4>" + textoSegundos + "</h4></div></div>";
   if (seconds == 0) {
      seconds=upgradeTime;
   } else {
@@ -47,3 +96,6 @@ function timer() {
 }
 var countdownTimer = setInterval('timer()', 1000);
 </script>
+  
+</body>
+</html>
