@@ -69,9 +69,8 @@ var ciclosEntero= Math.floor(diffFechas/upgradeTime);
 var ciclos=(diffFechas/upgradeTime);
 var diffCiclos=(ciclos-ciclosEntero)*100;
   segundosAnadir=Math.floor((diffCiclos*upgradeTime)/100);
-}else {
-  segundosAnadir=upgradeTime-diffFechas;
 }
+else segundosAnadir=upgradeTime-diffFechas;
 
 function timer() {
   var days        = Math.floor(segundosAnadir/24/60/60);
@@ -84,36 +83,18 @@ function timer() {
     return (n < 10 ? "0" + n : n);    
   }
   var dias=pad(days);
-  if(dias==1){
-    textoDias="dia";
-  }else{
-    textoDias="dias";
-  }
+  if(dias==1) textoDias="dia"; else textoDias="dias";  
   var horas=pad(hours);
-   if(horas==1){
-    textoHoras="hora";
-  }else{
-    textoHoras="horas";
-  }
+  if(horas==1) textoHoras="hora"; else textoHoras="horas";  
   var minutos=pad(minutes);
-   if(minutos==1){
-    textoMinutos="minuto";
-  }else{
-    textoMinutos="minutos";
-  }
+  if(minutos==1) textoMinutos="minuto"; else textoMinutos="minutos";  
   var segundos= pad(remainingSeconds);
-   if(segundos==1){
-    textoSegundos="segundo";
-  }else{
-    textoSegundos="segundos";
-  }
+  if(segundos==1) textoSegundos="segundo"; else textoSegundos="segundos";
+  
   document.getElementById('countdown').innerHTML = "<div class='contador'><div class='box'><span class='number'>"+dias+"</span><h4>" + textoDias + "</h4></div>"  + "<div class='box'><span class='number'>"+horas+"</span><h4>" + textoHoras + "</h4></div>" + "<div class='box'><span class='number'>"+minutos+"</span><h4>" + textoMinutos + "</h4></div>" + "<div class='box'><span class='number-four'>"+segundos+"</span><h4>" + textoSegundos + "</h4></div></div>";
-  if (segundosAnadir == 0) {
-     segundosAnadir=upgradeTime;
-  } else {
-    segundosAnadir--;
-  }
-}
+  if (segundosAnadir == 0) segundosAnadir=upgradeTime; else segundosAnadir--;
+  
+}//function timer
 var countdownTimer = setInterval('timer()', 1000);
 </script>
   
