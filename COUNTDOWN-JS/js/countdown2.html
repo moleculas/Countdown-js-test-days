@@ -51,47 +51,67 @@
     
         <span id="countdown" class="timer"></span>
 <script>
- var upgradeTime = 864000; //10 días
-var seconds = upgradeTime;
+
+var upgradeTime = 864000; //10 días
+var fechaActual=Math.round(+new Date()/1000);
+var diaInicio=4; //día inicio contador
+var mesInicio=3; //mes inicio contador
+var anoInicio=2021; //año inicio contador
+var horaInicio=19; //hora inicio contador
+var minutoInicio=20; //minutos inicio contador
+var segundoInicio=22; //segundos inicio contador
+var targetTmpDate = new Date(anoInicio, mesInicio-1, diaInicio, horaInicio, minutoInicio, segundoInicio);
+var fechaInicio= Math.round(targetTmpDate.getTime()/1000);
+var diffFechas=Math.abs(fechaActual-fechaInicio);
+var segundosAnadir;
+if(diffFechas>=upgradeTime){
+var ciclosEntero= Math.floor(diffFechas/upgradeTime);
+var ciclos=(diffFechas/upgradeTime);
+var diffCiclos=(ciclos-ciclosEntero)*100;
+  segundosAnadir=Math.floor((diffCiclos*upgradeTime)/100);
+}else {
+  segundosAnadir=upgradeTime-diffFechas;
+}
+
 function timer() {
-  var days        = Math.floor(seconds/24/60/60);
-  var hoursLeft   = Math.floor((seconds) - (days*86400));
+  var days        = Math.floor(segundosAnadir/24/60/60);
+  var hoursLeft   = Math.floor((segundosAnadir) - (days*86400));
   var hours       = Math.floor(hoursLeft/3600);
   var minutesLeft = Math.floor((hoursLeft) - (hours*3600));
   var minutes     = Math.floor(minutesLeft/60);
-  var remainingSeconds = seconds % 60;
+  var remainingSeconds = segundosAnadir % 60;
   function pad(n) {
-    return (n < 10 ? "0" + n : n);
+    return (n < 10 ? "0" + n : n);    
   }
   var dias=pad(days);
   if(dias==1){
-  	textoDias="dia";
+    textoDias="dia";
   }else{
-  	textoDias="dias";
-  };
+    textoDias="dias";
+  }
   var horas=pad(hours);
    if(horas==1){
-  	textoHoras="hora";
+    textoHoras="hora";
   }else{
-  	textoHoras="horas";
-  };
+    textoHoras="horas";
+  }
   var minutos=pad(minutes);
    if(minutos==1){
-  	textoMinutos="minuto";
+    textoMinutos="minuto";
   }else{
-  	textoMinutos="minutos";
-  };
+    textoMinutos="minutos";
+  }
   var segundos= pad(remainingSeconds);
    if(segundos==1){
-  	textoSegundos="segundo";
+    textoSegundos="segundo";
   }else{
-  	textoSegundos="segundos";
-  };
+    textoSegundos="segundos";
+  }
   document.getElementById('countdown').innerHTML = "<div class='contador'><div class='box'><span class='number'>"+dias+"</span><h4>" + textoDias + "</h4></div>"  + "<div class='box'><span class='number'>"+horas+"</span><h4>" + textoHoras + "</h4></div>" + "<div class='box'><span class='number'>"+minutos+"</span><h4>" + textoMinutos + "</h4></div>" + "<div class='box'><span class='number-four'>"+segundos+"</span><h4>" + textoSegundos + "</h4></div></div>";
-  if (seconds == 0) {
-     seconds=upgradeTime;
+  if (segundosAnadir == 0) {
+     segundosAnadir=upgradeTime;
   } else {
-    seconds--;
+    segundosAnadir--;
   }
 }
 var countdownTimer = setInterval('timer()', 1000);
